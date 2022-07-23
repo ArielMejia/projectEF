@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Cera la base de datos en memoria
 //builder.Services.AddDbContext<TareasContext>(p => p.UseInMemoryDatabase("TareasDB"));
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 //builder.Services.AddNpgsql<TareasContext>("User ID =postgres;Password=admin;Server=localhost;Port=5432;Database=TareasDB");
 builder.Services.AddNpgsql<TareasContext>(builder.Configuration.GetConnectionString("cnTareas"));
